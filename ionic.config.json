@@ -1,0 +1,7 @@
+{
+  "name": "app_UNAHeventos",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

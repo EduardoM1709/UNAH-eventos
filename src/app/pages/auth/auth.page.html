@@ -1,0 +1,44 @@
+<app-header title="Login"></app-header>
+
+<ion-content>
+  <div class="d-flex-center">
+   <form [formGroup]="form" class="auth-form" (ngSubmit)="submit()" (keypress.enter)="submit()">
+    <app-logo></app-logo>
+  <app-custom-imput 
+  autocomplete="email"
+  icon='mail-outline'
+  [control]="form.controls.email"
+  type="email"
+  label="Correo"
+  ></app-custom-imput>
+  
+<div class="validators" *ngIf="form.controls.email.errors && form.controls.email.touched">
+  <div *ngIF="form.controls.email.errors?.['requerid']">El correo es obligatorio</div>
+  <div *ngIF="form.controls.email.errors?.['email']">Ingrese un correo valido</div>
+</div>
+
+  <app-custom-imput 
+  icon='lock-closed-outline'
+  [control]="form.controls.password"
+  type="password"
+  label="Contrasenia"
+  ></app-custom-imput>
+  <div class="validators" *ngIf="form.controls.password.errors && form.controls.password.touched">
+    <div *ngIf="form.controls.password.errors?.['requerid']">La contrasenia es obligatoria</div>
+  </div>
+
+  <p routerLink="forgot-password" class="ion-text-end">¿Olvidaste tu contrasenia?</p>
+
+  <ion-button  expand="block"  mode="ios" class="submit" type="submit" [disabled]="form.invalid">
+  Ingresar
+  <ion-icon slot="end" name="log-in-outline"></ion-icon>
+  </ion-button>
+  <ion-button class="ion-margin-top" routerLink="sign-up" expand="block"  mode="ios" fill="outline">
+    Registrate
+    <ion-icon slot="end" name="person-add-outline"></ion-icon>
+    </ion-button>
+  </form> 
+  </div>
+  
+  
+</ion-content>

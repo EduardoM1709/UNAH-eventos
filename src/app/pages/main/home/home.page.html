@@ -1,0 +1,55 @@
+<app-header title="Inicio"></app-header>
+<ion-content>
+  <style>
+    .button-groupe {
+      display: flex;
+      justify-content: flex-end; /* Alinea los botones a la derecha */
+      gap: 8px; /* Espaciado entre botones */
+      margin-top: 8px; /* Añade un poco de espacio superior para separación */
+    }
+  </style>
+  <ion-list>
+    <ion-item-sliding *ngFor="let p of products" class="product-item" >
+      <ion-item >
+        <ion-col size="5">
+          <img [src]="p.image" />
+        </ion-col>
+          
+       
+        <ion-label class="empty">
+          <div class="name">{{p.name}}</div>
+          <div class="data">
+            <strong>Descripcion: </strong>{{p.description}} <br>
+            <strong>Fecha: </strong>{{p.date}} <br>
+            <strong>Hora: </strong>{{p.time}} <br>
+            <strong>Direccion: </strong>{{p.direction}} <br>
+          </div>
+        </ion-label>
+        <div class="button-groupe">
+          <!-- Editar -->
+          <ion-button fill="clear" color="primary" (click)="addUpdateProduct(p)">
+            <ion-icon slot="start" name="create-outline"></ion-icon>
+            Editar
+          </ion-button>
+        
+          <!-- Eliminar -->
+          <ion-button fill="clear" color="danger" (click)="confirmeDeleteProduct(p)"> 
+            <ion-icon slot="start" name="trash-outline"></ion-icon> 
+            Eliminar 
+          </ion-button>
+        </div>
+      </ion-item>
+      <!-- Opciones -->
+
+      
+    </ion-item-sliding>
+  </ion-list>
+  <!-- Nuevo Producto -->
+<ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab-button (click)="addUpdateProduct()">
+    <ion-icon name="add"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+
+</ion-content>

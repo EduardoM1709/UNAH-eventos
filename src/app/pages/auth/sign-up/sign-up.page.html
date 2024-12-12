@@ -1,0 +1,58 @@
+<app-header backButton="/auth" title="Registro"></app-header>
+
+<ion-content>
+<!-- Name -->
+  <div class="d-flex-center">
+   <form [formGroup]="form" class="auth-form" (ngSubmit)="submit()" (keypress.enter)="submit()">
+    <app-logo></app-logo>
+
+    <app-custom-imput 
+    autocomplete="name"
+    icon='person-outline'
+    [control]="form.controls.name"
+    type="text"
+    label="Nombre"
+    ></app-custom-imput>
+    
+  <div class="validators" *ngIF="form.controls.name.errors && form.controls.name.touched">
+    <div *ngIF="form.controls.name.errors?.['requerid']">El correo es obligatorio</div>
+    <div *ngIF="form.controls.name.errors?.['minlenght']">El nombre debe tener al menos 4 caracteres</div>
+  </div>
+
+<!-- Email -->
+  <app-custom-imput 
+  autocomplete="email"
+  icon='mail-outline'
+  [control]="form.controls.email"
+  type="email"
+  label="Correo"
+  ></app-custom-imput>
+  
+<div class="validators" *ngIF="form.controls.email.errors && form.controls.email.touched">
+  <div *ngIF="form.controls.email.errors?.['requerid']">El correo es obligatorio</div>
+  <div *ngIF="form.controls.email.errors?.['email']">Ingrese un correo valido</div>
+</div>
+<!-- Password -->
+  <app-custom-imput 
+  icon='lock-closed-outline'
+  [control]="form.controls.password"
+  type="password"
+  label="Contrasenia"
+  ></app-custom-imput>
+  <div class="validators" *ngIF="form.controls.password.errors && form.controls.password.touched">
+    <div *ngIF="form.controls.password.errors?.['requerid']">La contrasenia es obligatoria</div>
+  </div>
+
+
+
+  <ion-button  expand="block"  mode="ios" class="submit" type="submit" [disabled]="form.invalid">
+    Registrate
+    <ion-icon slot="end" name="person-add-outline"></ion-icon>
+  </ion-button>
+  
+  </form> 
+  </div>
+  
+  
+</ion-content>
+
